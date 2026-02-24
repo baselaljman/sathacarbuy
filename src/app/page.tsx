@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, ArrowDownCircle, Settings2, Shield } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -41,8 +41,11 @@ export default function Home() {
             <Button size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
               <Link href="/request">اطلب سطحة الآن</Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-semibold bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20" asChild>
-              <Link href="/driver">انضم كقائد سطحة</Link>
+            <Button size="lg" className="h-14 px-8 text-lg font-semibold bg-red-600 hover:bg-red-700 text-white border-none animate-pulse-subtle" asChild>
+              <a href="tel:0500606861">
+                <Phone className="ml-2 h-5 w-5 fill-white/20" />
+                اتصل الآن (0500606861)
+              </a>
             </Button>
           </div>
         </div>
