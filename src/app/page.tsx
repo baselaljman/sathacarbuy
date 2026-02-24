@@ -60,7 +60,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <FeatureCard 
               icon={<Clock className="h-8 w-8 text-primary" />}
-              title="وصول خلال 15 دقيقة"
+              title="وصول خلال دقائق"
               description="متوسط وقت الوصول داخل حدود مدينة الرياض."
             />
             <FeatureCard 
