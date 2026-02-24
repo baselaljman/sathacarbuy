@@ -2,14 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Truck, Menu, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Truck } from "lucide-react";
 
 export function Navigation() {
   return (
@@ -24,38 +17,7 @@ export function Navigation() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="/request" className="text-sm font-medium hover:text-primary transition-colors">
-            اطلب سطحة
-          </Link>
-          <Link href="/driver" className="text-sm font-medium hover:text-primary transition-colors">
-            بوابة السائق
-          </Link>
-          <Button variant="default" asChild>
-            <Link href="/auth">تسجيل الدخول</Link>
-          </Button>
-        </div>
-
-        <div className="md:hidden">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem asChild>
-                <Link href="/request">اطلب سطحة</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/driver">بوابة السائق</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/auth">تسجيل الدخول</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+        {/* تم حذف روابط التنقل بناءً على طلب المستخدم */}
       </div>
     </nav>
   );
