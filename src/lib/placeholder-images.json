@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-tow",
+      "description": "A professional tow truck on a highway at sunset",
+      "imageUrl": "https://images.unsplash.com/photo-1616728827388-84563c099b29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0b3clMjB0cnVja3xlbnwwfHx8fDE3NzE5MjMyOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tow truck"
+    },
+    {
+      "id": "driver-avatar",
+      "description": "Professional tow truck driver smiling",
+      "imageUrl": "https://images.unsplash.com/photo-1492447166138-50c3889fccb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYW4lMjBzbWlsZXxlbnwwfHx8fDE3NzE4NzYzOTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man smile"
+    },
+    {
+      "id": "car-accident",
+      "description": "A car that needs assistance",
+      "imageUrl": "https://images.unsplash.com/photo-1608694385922-2a5173401a2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxicm9rZW4lMjBjYXJ8ZW58MHx8fHwxNzcxOTIzMjk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "broken car"
+    }
+  ]
 }
