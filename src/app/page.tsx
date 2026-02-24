@@ -3,7 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, ArrowDownCircle, Settings2, Shield } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -61,22 +61,60 @@ export default function Home() {
             <FeatureCard 
               icon={<Clock className="h-8 w-8 text-primary" />}
               title="وصول خلال دقائق"
-              description="متوسط وقت الوصول داخل حدود مدينة الرياض."
+              description="نضمن لك سرعة الاستجابة والوصول لموقعك في وقت قياسي."
             />
             <FeatureCard 
               icon={<MapPin className="h-8 w-8 text-primary" />}
               title="تغطية شاملة للمدينة"
-              description="من الملقا إلى الشفا، نحن معك في كل مكان."
+              description="من الملقا إلى الشفا، نحن معك في كل مكان داخل الرياض."
             />
             <FeatureCard 
               icon={<ShieldCheck className="h-8 w-8 text-primary" />}
               title="سائقون موثوقون"
-              description="جميع سائقينا يخضعون لفحوصات أمنية دقيقة."
+              description="طاقم عمل محترف ومدرب للتعامل مع كافة المواقف الصعبة."
             />
             <FeatureCard 
               icon={<Truck className="h-8 w-8 text-primary" />}
               title="جميع أنواع المركبات"
-              description="دعم للسيارات الصغيرة، العائلية، والمركبات التجارية الخفيفة."
+              description="أسطول متنوع لنقل السيارات الصغيرة، العائلية، والفاخرة."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Types Section */}
+      <section className="py-24 bg-white">
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold font-headline mb-4 text-primary">أنواع السطحات المتوفرة</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">لدينا أسطول متكامل مجهز بأحدث التقنيات لنقل سيارتك بأمان تامة.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <FleetCard 
+              icon={<Truck className="h-8 w-8 text-primary" />}
+              title="سطحة عادية"
+              description="مثالية لنقل السيارات المتعطلة والمسافات القصيرة."
+            />
+            <FleetCard 
+              icon={<Settings2 className="h-8 w-8 text-primary" />}
+              title="سطحة هيدروليك"
+              description="لنقل السيارات الفاخرة والرياضية بأقصى درجات الحماية."
+            />
+            <FleetCard 
+              icon={<ArrowDownCircle className="h-8 w-8 text-primary" />}
+              title="سطحة فل داون"
+              description="تتميز بالنزول الكامل على الأرض لسهولة تحميل السيارات."
+            />
+            <FleetCard 
+              icon={<Shield className="h-8 w-8 text-primary" />}
+              title="نزول كامل"
+              description="مخصصة للسيارات المنخفضة جداً لضمان عدم حدوث خدوش."
+            />
+            <FleetCard 
+              icon={<Settings2 className="h-8 w-8 text-primary" />}
+              title="سطحة كفرات"
+              description="مخصصة للسيارات التي تعاني من مشاكل في الإطارات."
             />
           </div>
         </div>
@@ -146,6 +184,20 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
         <div className="mb-4 flex justify-center">{icon}</div>
         <h3 className="text-lg font-bold mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground">{description}</p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function FleetCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+  return (
+    <Card className="border-2 border-primary/5 hover:border-accent/30 transition-all hover:shadow-md bg-white">
+      <CardContent className="pt-8 text-center px-4">
+        <div className="mb-4 flex justify-center p-3 bg-muted rounded-full w-fit mx-auto group-hover:bg-accent/10 transition-colors">
+          {icon}
+        </div>
+        <h3 className="text-md font-bold mb-2">{title}</h3>
+        <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
       </CardContent>
     </Card>
   );
