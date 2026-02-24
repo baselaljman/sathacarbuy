@@ -30,7 +30,7 @@ export default function Home() {
         
         <div className="container relative z-10 px-4 text-center text-white animate-fade-in">
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl font-headline mb-6">
-            شبكة السطحات الأكثر <br />
+            مجموعة سطحات الأكثر <br />
             <span className="text-accent">موثوقية في الرياض</span>
           </h1>
           <p className="mx-auto max-w-[700px] text-lg text-gray-200 mb-10">
