@@ -1,4 +1,3 @@
-
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -92,29 +91,34 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             <FleetCard 
-              icon={<Truck className="h-8 w-8 text-primary" />}
+              imageUrl={PlaceHolderImages.find(img => img.id === 'fleet-normal')?.imageUrl || ""}
               title="سطحة عادية"
               description="مثالية لنقل السيارات المتعطلة والمسافات القصيرة."
+              imageHint="tow truck"
             />
             <FleetCard 
-              icon={<Settings2 className="h-8 w-8 text-primary" />}
+              imageUrl={PlaceHolderImages.find(img => img.id === 'fleet-hydraulic')?.imageUrl || ""}
               title="سطحة هيدروليك"
               description="لنقل السيارات الفاخرة والرياضية بأقصى درجات الحماية."
+              imageHint="hydraulic truck"
             />
             <FleetCard 
-              icon={<ArrowDownCircle className="h-8 w-8 text-primary" />}
+              imageUrl={PlaceHolderImages.find(img => img.id === 'fleet-fulldown')?.imageUrl || ""}
               title="سطحة فل داون"
               description="تتميز بالنزول الكامل على الأرض لسهولة تحميل السيارات."
+              imageHint="flatbed truck"
             />
             <FleetCard 
-              icon={<Shield className="h-8 w-8 text-primary" />}
+              imageUrl={PlaceHolderImages.find(img => img.id === 'fleet-low')?.imageUrl || ""}
               title="نزول كامل"
               description="مخصصة للسيارات المنخفضة جداً لضمان عدم حدوث خدوش."
+              imageHint="low truck"
             />
             <FleetCard 
-              icon={<Settings2 className="h-8 w-8 text-primary" />}
+              imageUrl={PlaceHolderImages.find(img => img.id === 'fleet-tire')?.imageUrl || ""}
               title="سطحة كفرات"
               description="مخصصة للسيارات التي تعاني من مشاكل في الإطارات."
+              imageHint="wheel lift"
             />
           </div>
         </div>
@@ -189,13 +193,19 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode, titl
   );
 }
 
-function FleetCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
+function FleetCard({ imageUrl, title, description, imageHint }: { imageUrl: string, title: string, description: string, imageHint: string }) {
   return (
-    <Card className="border-2 border-primary/5 hover:border-accent/30 transition-all hover:shadow-md bg-white">
-      <CardContent className="pt-8 text-center px-4">
-        <div className="mb-4 flex justify-center p-3 bg-muted rounded-full w-fit mx-auto group-hover:bg-accent/10 transition-colors">
-          {icon}
-        </div>
+    <Card className="border-2 border-primary/5 hover:border-accent/30 transition-all hover:shadow-md bg-white overflow-hidden group">
+      <div className="relative h-48 w-full">
+        <Image 
+          src={imageUrl} 
+          alt={title} 
+          fill 
+          className="object-cover transition-transform group-hover:scale-105"
+          data-ai-hint={imageHint}
+        />
+      </div>
+      <CardContent className="pt-6 text-center px-4">
         <h3 className="text-md font-bold mb-2">{title}</h3>
         <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>
       </CardContent>

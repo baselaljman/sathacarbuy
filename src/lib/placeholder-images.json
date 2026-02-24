@@ -17,6 +17,36 @@
       "description": "A car that needs assistance",
       "imageUrl": "https://images.unsplash.com/photo-1608694385922-2a5173401a2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxicm9rZW4lMjBjYXJ8ZW58MHx8fHwxNzcxOTIzMjk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "broken car"
+    },
+    {
+      "id": "fleet-normal",
+      "description": "Standard tow truck",
+      "imageUrl": "https://images.unsplash.com/photo-1601508836900-ee2aa7840a7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0b3clMjB0cnVja3xlbnwwfHx8fDE3NzE5MjMyOTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tow truck"
+    },
+    {
+      "id": "fleet-hydraulic",
+      "description": "Hydraulic tow truck",
+      "imageUrl": "https://images.unsplash.com/photo-1677438076842-6708ac2cad8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxoeWRyYXVsaWMlMjB0cnVja3xlbnwwfHx8fDE3NzE5MjQ5MTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hydraulic truck"
+    },
+    {
+      "id": "fleet-fulldown",
+      "description": "Full down flatbed truck",
+      "imageUrl": "https://images.unsplash.com/photo-1765603955623-e2f57e1c7d29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmbGF0YmVkJTIwdHJ1Y2t8ZW58MHx8fHwxNzcxOTI0OTE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "flatbed truck"
+    },
+    {
+      "id": "fleet-low",
+      "description": "Low profile tow truck",
+      "imageUrl": "https://images.unsplash.com/photo-1720929651979-055982855242?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsb3clMjB0cnVja3xlbnwwfHx8fDE3NzE5MjQ5MTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "low truck"
+    },
+    {
+      "id": "fleet-tire",
+      "description": "Wheel lift tow truck",
+      "imageUrl": "https://images.unsplash.com/photo-1725916631643-70c1e5c16030?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3aGVlbCUyMGxpZnR8ZW58MHx8fHwxNzcxOTI0OTE4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wheel lift"
     }
   ]
 }
