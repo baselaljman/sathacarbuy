@@ -3,7 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, MapPin, ShieldCheck, Clock, CheckCircle } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -87,12 +87,18 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold font-headline mb-4">نطاق تغطيتنا في الرياض</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">نغطي كافة أحياء العاصمة لضمان وصول أسرع خدمة إليك أينما كنت.</p>
+            <div className="space-y-4">
+              <p className="text-muted-foreground max-w-2xl mx-auto">نغطي كافة أحياء العاصمة لضمان وصول أسرع خدمة إليك أينما كنت.</p>
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-6 py-3 rounded-full border border-primary/20 shadow-sm animate-pulse-subtle">
+                <Zap className="h-5 w-5 text-accent fill-accent" />
+                <span className="font-bold text-lg">في كل حي هناك سطحة بالقرب منك وصول خلال دقائق</span>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(RIYADH_DISTRICTS).map(([region, districts]) => (
-              <Card key={region} className="border-2 border-primary/5 hover:border-primary/20 transition-all shadow-sm h-full group">
+              <Card key={region} className="border-2 border-primary/5 hover:border-primary/20 transition-all shadow-sm h-full group bg-white">
                 <CardHeader className="bg-primary/5 group-hover:bg-primary/10 transition-colors">
                   <CardTitle className="text-xl font-bold text-primary flex items-center gap-2">
                     <MapPin className="h-5 w-5" />
