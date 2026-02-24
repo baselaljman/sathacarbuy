@@ -1,11 +1,13 @@
 
 import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Truck, MapPin, ShieldCheck, Clock } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { RIYADH_DISTRICTS } from "@/lib/riyadh-districts";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-tow');
@@ -34,7 +36,7 @@ export default function Home() {
           </h1>
           <p className="mx-auto max-w-[700px] text-lg text-gray-200 mb-10">
             متعطل في الرياض؟ نصلك بأقرب سطحة خلال دقائق. 
-            نغطي شمال وشرق وغرب وجنوب ووسط الرياض.
+            نغطي كافة أحياء الرياض العاصمة على مدار الساعة.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="h-14 px-8 text-lg font-semibold" asChild>
@@ -76,6 +78,39 @@ export default function Home() {
               title="جميع أنواع المركبات"
               description="دعم للسيارات الصغيرة، العائلية، والمركبات التجارية الخفيفة."
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Coverage Areas Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold font-headline mb-4">نطاق تغطيتنا في الرياض</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">نغطي كافة أحياء العاصمة لضمان وصول أسرع خدمة إليك أينما كنت.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Object.entries(RIYADH_DISTRICTS).map(([region, districts]) => (
+              <Card key={region} className="border-2 border-primary/5 hover:border-primary/20 transition-all shadow-sm h-full group">
+                <CardHeader className="bg-primary/5 group-hover:bg-primary/10 transition-colors">
+                  <CardTitle className="text-xl font-bold text-primary flex items-center gap-2">
+                    <MapPin className="h-5 w-5" />
+                    {region.split(' (')[0]}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6">
+                  <div className="flex flex-wrap gap-2">
+                    {districts.map((district) => (
+                      <Badge key={district} variant="outline" className="bg-white hover:bg-primary/5 border-primary/10 text-xs font-medium py-1">
+                        <CheckCircle className="h-3 w-3 ml-1 text-accent" />
+                        {district.split(' (')[0]}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
