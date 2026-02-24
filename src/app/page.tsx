@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, Phone } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, Phone, FileText, ClipboardCheck } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -56,35 +56,86 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats/Features Section */}
+      {/* Features Section */}
       <section className="py-24 bg-background">
         <div className="container px-4 mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold font-headline mb-4">لماذا تختار سطحة الرياض؟</h2>
+            <h2 className="text-3xl font-bold font-headline mb-4">خدماتنا المميزة</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">نقدم أسرع وأكثر خدمات المساعدة على الطريق أماناً في العاصمة.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <FeatureCard 
               icon={<Clock className="h-8 w-8 text-primary" />}
               title="وصول خلال دقائق"
-              description="نضمن لك سرعة الاستجابة والوصول لموقعك في وقت قياسي."
+              description="نضمن لك سرعة الاستجابة والوصول لموقعك في وقت قياسي في جميع أحياء الرياض."
             />
             <FeatureCard 
-              icon={<MapPin className="h-8 w-8 text-primary" />}
-              title="تغطية شاملة للمدينة"
-              description="من الملقا إلى الشفا، نحن معك في كل مكان داخل الرياض."
+              icon={<ClipboardCheck className="h-8 w-8 text-primary" />}
+              title="تقدير الحوادث (تقدير)"
+              description="نقل سيارتك مباشرة إلى مراكز التقدير المعتمدة ومساعدتك في إنهاء الإجراءات بسهولة."
             />
             <FeatureCard 
               icon={<ShieldCheck className="h-8 w-8 text-primary" />}
               title="سائقون موثوقون"
-              description="طاقم عمل محترف ومدرب للتعامل مع كافة المواقف الصعبة."
+              description="طاقم عمل محترف ومدرب للتعامل مع كافة المواقف الصعبة وسحب السيارات المتضررة."
+            />
+            <FeatureCard 
+              icon={<MapPin className="h-8 w-8 text-primary" />}
+              title="تغطية شاملة للمدينة"
+              description="من الملقا إلى الشفا، نحن معك في كل مكان داخل الرياض بانتشار واسع."
             />
             <FeatureCard 
               icon={<Truck className="h-8 w-8 text-primary" />}
               title="جميع أنواع المركبات"
-              description="أسطول متنوع لنقل السيارات الصغيرة، العائلية، والفاخرة."
+              description="أسطول متنوع لنقل السيارات الصغيرة، العائلية، والفاخرة بآمان تام."
             />
+            <FeatureCard 
+              icon={<Zap className="h-8 w-8 text-primary" />}
+              title="خدمة 24 ساعة"
+              description="فريقنا جاهز لخدمتك في أي وقت، ليلاً أو نهاراً، طوال أيام الأسبوع."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Taqdeer Highlight Section */}
+      <section className="py-16 bg-primary text-white">
+        <div className="container px-4 mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <div className="flex-1 space-y-6">
+              <Badge className="bg-accent text-primary-foreground font-bold px-4 py-1">خدمة خاصة</Badge>
+              <h2 className="text-4xl font-bold font-headline leading-tight">خدمة نقل سيارات الحوادث <br />إلى مراكز التقدير</h2>
+              <p className="text-primary-foreground/90 text-lg">
+                هل تعرضت لحادث لا قدر الله؟ نحن نتكفل بنقل سيارتك من موقع الحادث إلى مراكز التقدير المعتمدة (تقدير) في الرياض، ونوفر لك خدمة سريعة تضمن لك راحة البال في هذه الظروف.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-accent" />
+                  <span>تغطية جميع مراكز التقدير في الرياض</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-accent" />
+                  <span>التعامل الاحترافي مع السيارات المتضررة بشدة</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-accent" />
+                  <span>توفير فواتير رسمية وموثقة</span>
+                </li>
+              </ul>
+              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold" asChild>
+                <a href="tel:0500606861">طلب سطحة تقدير الآن</a>
+              </Button>
+            </div>
+            <div className="flex-1 relative h-[350px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <Image 
+                src={PlaceHolderImages.find(img => img.id === 'taqdeer-service')?.imageUrl || ""} 
+                alt="تقدير الحوادث" 
+                fill 
+                className="object-cover"
+                data-ai-hint="car service"
+              />
+            </div>
           </div>
         </div>
       </section>
