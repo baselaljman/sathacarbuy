@@ -30,9 +30,6 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
       });
 
       setHistory(prev => [...prev, { role: 'model', content: response.response }]);
-      
-      // If the response sounds like a summary, we could technically parse it or let user confirm
-      // For this UI, we'll provide a button to "Use this description" once enough info is gathered
     } catch (error) {
       console.error("AI Assistant Error:", error);
     } finally {
@@ -45,9 +42,9 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
       <CardHeader className="bg-primary text-white p-4">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Sparkles className="h-5 w-5 text-accent" />
-          AI Incident Assistant
+          المساعد الذكي للبلاغات
         </CardTitle>
-        <p className="text-xs text-primary-foreground/80">Help us understand the problem so we can send the right equipment.</p>
+        <p className="text-xs text-primary-foreground/80">ساعدنا في فهم المشكلة لنرسل المعدات المناسبة.</p>
       </CardHeader>
       <CardContent className="p-0">
         <ScrollArea className="h-[300px] p-4">
@@ -55,13 +52,13 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
             {history.length === 0 && (
               <div className="text-center py-10 text-muted-foreground">
                 <Bot className="h-10 w-10 mx-auto mb-2 opacity-20" />
-                <p className="text-sm">Hi! Briefly describe what happened to your car.</p>
+                <p className="text-sm font-medium">أهلاً بك! صف لي باختصار ماذا حدث لسيارتك.</p>
               </div>
             )}
             {history.map((msg, i) => (
               <div key={i} className={cn(
                 "flex gap-3 max-w-[85%]",
-                msg.role === 'user' ? "ml-auto flex-row-reverse" : "mr-auto"
+                msg.role === 'user' ? "mr-auto flex-row-reverse" : "ml-auto"
               )}>
                 <div className={cn(
                   "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-lg border shadow",
@@ -72,15 +69,15 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
                 <div className={cn(
                   "rounded-2xl px-4 py-2 text-sm shadow-sm",
                   msg.role === 'user' 
-                    ? "bg-accent/10 text-foreground rounded-tr-none" 
-                    : "bg-muted text-foreground rounded-tl-none border"
+                    ? "bg-accent/10 text-foreground rounded-tl-none" 
+                    : "bg-muted text-foreground rounded-tr-none border"
                 )}>
                   {msg.content}
                 </div>
               </div>
             ))}
             {isLoading && (
-              <div className="flex gap-3 mr-auto max-w-[85%] animate-pulse">
+              <div className="flex gap-3 ml-auto max-w-[85%] animate-pulse">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/20">
                   <Bot className="h-4 w-4 opacity-50" />
                 </div>
@@ -93,7 +90,7 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
       <CardFooter className="p-4 bg-muted/50 border-t flex flex-col gap-3">
         <div className="flex w-full gap-2">
           <Input 
-            placeholder="Type your message..." 
+            placeholder="اكتب رسالتك هنا..." 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
@@ -112,7 +109,7 @@ export function IssueAssistant({ onSummary }: { onSummary: (summary: string) => 
               if (lastModelResponse) onSummary(lastModelResponse);
             }}
           >
-            Use this description as summary
+            استخدم هذا الوصف كملخص للحالة
           </Button>
         )}
       </CardFooter>

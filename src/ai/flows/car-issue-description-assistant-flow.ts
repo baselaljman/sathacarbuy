@@ -1,6 +1,7 @@
+
 'use server';
 /**
- * @fileOverview An AI assistant that helps car owners describe their car's problem or damage.
+ * @fileOverview An AI assistant that helps car owners describe their car's problem or damage in Arabic.
  *
  * - describeCarIssue - A function that interacts with the AI assistant to clarify car issues.
  * - CarIssueDescriptionAssistantInput - The input type for the describeCarIssue function.
@@ -28,7 +29,7 @@ export type CarIssueDescriptionAssistantInput = z.infer<
 const CarIssueDescriptionAssistantOutputSchema = z.object({
   response: z
     .string()
-    .describe('The AI assistant\'s response, either a clarifying question or a summary.'),
+    .describe('The AI assistant\'s response in Arabic, either a clarifying question or a summary.'),
 });
 export type CarIssueDescriptionAssistantOutput = z.infer<
   typeof CarIssueDescriptionAssistantOutputSchema
@@ -44,28 +45,29 @@ const prompt = ai.definePrompt({
   name: 'carIssueDescriptionAssistantPrompt',
   input: { schema: CarIssueDescriptionAssistantInputSchema },
   output: { schema: CarIssueDescriptionAssistantOutputSchema },
-  prompt: `You are an AI assistant designed to help car owners accurately describe their car's problem or damage.
-Your goal is to ask clarifying questions to gather enough detail to provide a comprehensive summary of the issue.
+  prompt: `أنت مساعد ذكاء اصطناعي مصمم لمساعدة أصحاب السيارات في وصف مشكلة سيارتهم أو الضرر الواقع بها بدقة باللغة العربية.
+هدفك هو طرح أسئلة توضيحية لجمع تفاصيل كافية لتقديم ملخص شامل للمشكلة.
 
-Instructions:
-1.  Read the user's current message and the conversation history.
-2.  If the description is vague or lacks specific details (e.g., location of damage, specific symptoms, sounds), ask a clarifying question.
-3.  If you believe you have enough information to describe the problem for a tow truck driver, provide a concise summary of the issue.
-4.  Do not make assumptions or diagnose the problem. Your role is only to help describe it.
-5.  Keep your responses conversational and helpful.
+التعليمات:
+1. اقرأ رسالة المستخدم الحالية وسجل المحادثة.
+2. يجب أن تكون جميع ردودك باللغة العربية وبلهجة مهذبة ومساعدة.
+3. إذا كان الوصف غامضاً أو يفتقر لتفاصيل محددة (مثل موقع الضرر، أعراض معينة، أصوات)، اطرح سؤالاً توضيحياً واحداً في كل مرة.
+4. إذا كنت تعتقد أن لديك معلومات كافية لوصف المشكلة لسائق السطحة، قدم ملخصاً موجزاً وواضحاً للمشكلة.
+5. لا تقم بتقديم أي تشخيص ميكانيكي. دورك هو الوصف فقط.
+6. اجعل ردودك ودودة وقصيرة.
 
-Conversation History:
+سجل المحادثة:
 {{#each history}}
   {{#if (eq role "user")}}
-    User: {{{content}}}
+    المستخدم: {{{content}}}
   {{else}}
-    Assistant: {{{content}}}
+    المساعد: {{{content}}}
   {{/if}}
 {{/each}}
 
-User's current message: {{{currentMessage}}}
+رسالة المستخدم الحالية: {{{currentMessage}}}
 
-Assistant's response:
+رد المساعد باللغة العربية:
 `,
 });
 

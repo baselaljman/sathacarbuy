@@ -20,19 +20,19 @@ export function Navigation() {
             <Truck className="h-6 w-6" />
           </div>
           <span className="text-xl font-bold tracking-tight text-primary font-headline">
-            Riyadh <span className="text-accent">TowAssist</span>
+            سطحة <span className="text-accent">الرياض</span>
           </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-6">
           <Link href="/request" className="text-sm font-medium hover:text-primary transition-colors">
-            Request a Tow
+            اطلب سطحة
           </Link>
           <Link href="/driver" className="text-sm font-medium hover:text-primary transition-colors">
-            Driver Portal
+            بوابة السائق
           </Link>
           <Button variant="default" asChild>
-            <Link href="/auth">Sign In</Link>
+            <Link href="/auth">تسجيل الدخول</Link>
           </Button>
         </div>
 
@@ -45,13 +45,13 @@ export function Navigation() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
               <DropdownMenuItem asChild>
-                <Link href="/request">Request a Tow</Link>
+                <Link href="/request">اطلب سطحة</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/driver">Driver Portal</Link>
+                <Link href="/driver">بوابة السائق</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link href="/auth">Sign In</Link>
+                <Link href="/auth">تسجيل الدخول</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

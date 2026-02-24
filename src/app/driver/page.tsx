@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Truck, MapPin, User, ChevronRight, AlertTriangle, Clock } from "lucide-react";
+import { Truck, MapPin, User, ChevronLeft, AlertTriangle, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function DriverDashboard() {
   const [isOnline, setIsOnline] = useState(true);
@@ -20,48 +21,48 @@ export default function DriverDashboard() {
       <main className="container py-10 px-4 max-w-2xl mx-auto space-y-8">
         <div className="flex items-center justify-between bg-white p-6 rounded-2xl shadow-sm border">
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold font-headline">Welcome back, Ahmed</h2>
-            <p className="text-sm text-muted-foreground">You are currently {isOnline ? "visible to users" : "offline"}</p>
+            <h2 className="text-2xl font-bold font-headline">أهلاً بك، أحمد</h2>
+            <p className="text-sm text-muted-foreground">أنت الآن {isOnline ? "متاح للطلبات" : "غير متاح"}</p>
           </div>
           <div className="flex items-center gap-2 bg-muted/50 p-2 rounded-lg border">
-            <Label htmlFor="online-status" className="text-xs font-bold">ONLINE</Label>
+            <Label htmlFor="online-status" className="text-xs font-bold">نشط</Label>
             <Switch id="online-status" checked={isOnline} onCheckedChange={setIsOnline} />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-           <StatCard label="Today's Earnings" value="SAR 450" color="text-green-600" />
-           <StatCard label="Jobs Completed" value="3" color="text-primary" />
+           <StatCard label="أرباح اليوم" value="450 ر.س" color="text-green-600" />
+           <StatCard label="الطلبات المكتملة" value="3" color="text-primary" />
         </div>
 
         <section className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold">New Requests (1)</h3>
-            <Badge variant="outline" className="bg-accent/5 text-accent border-accent/20">Nearby</Badge>
+            <h3 className="text-lg font-bold">طلبات جديدة (1)</h3>
+            <Badge variant="outline" className="bg-accent/5 text-accent border-accent/20">قريب منك</Badge>
           </div>
 
           <Card className="border-2 border-primary/20 shadow-lg animate-pulse-subtle">
             <CardHeader className="flex flex-row items-center justify-between">
               <div className="flex items-center gap-2">
-                <Badge className="bg-destructive/10 text-destructive border-destructive/20">Urgent</Badge>
-                <span className="text-xs text-muted-foreground">2 mins ago</span>
+                <Badge className="bg-destructive/10 text-destructive border-destructive/20">عاجل</Badge>
+                <span className="text-xs text-muted-foreground">منذ دقيقتين</span>
               </div>
-              <p className="text-lg font-bold text-primary">SAR 180</p>
+              <p className="text-lg font-bold text-primary">180 ر.س</p>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
                  <div className="flex gap-3">
                     <div className="mt-1"><MapPin className="h-4 w-4 text-primary" /></div>
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">PICKUP</p>
-                      <p className="font-semibold">Al-Malqa, North Riyadh</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">موقع العميل</p>
+                      <p className="font-semibold">حي الملقا، شمال الرياض</p>
                     </div>
                  </div>
                  <div className="flex gap-3">
                     <div className="mt-1"><Truck className="h-4 w-4 text-accent" /></div>
                     <div>
-                      <p className="text-xs text-muted-foreground uppercase">DESTINATION</p>
-                      <p className="font-semibold">Al-Faisaliah Service Center</p>
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider">الوجهة</p>
+                      <p className="font-semibold">مركز صيانة الفيصلية</p>
                     </div>
                  </div>
               </div>
@@ -69,25 +70,25 @@ export default function DriverDashboard() {
               <div className="p-3 bg-muted rounded-lg flex gap-3">
                  <AlertTriangle className="h-5 w-5 text-orange-500 shrink-0" />
                  <div>
-                    <p className="text-sm font-bold">Broken Engine</p>
-                    <p className="text-xs text-muted-foreground">White Toyota Camry 2022. Smoke coming from engine hood.</p>
+                    <p className="text-sm font-bold">عطل في المحرك</p>
+                    <p className="text-xs text-muted-foreground">تويوتا كامري بيضاء 2022. خروج دخان من غطاء المحرك.</p>
                  </div>
               </div>
             </CardContent>
             <CardFooter className="flex gap-3">
-              <Button variant="outline" className="w-1/3">Reject</Button>
+              <Button variant="outline" className="w-1/3">رفض</Button>
               <Button className="flex-1 bg-accent text-white hover:bg-accent/90">
-                 Accept Job <ChevronRight className="ml-2 h-4 w-4" />
+                 قبول الطلب <ChevronLeft className="mr-2 h-4 w-4" />
               </Button>
             </CardFooter>
           </Card>
         </section>
 
         <section className="space-y-4">
-           <h3 className="text-lg font-bold">Today's History</h3>
+           <h3 className="text-lg font-bold">سجل اليوم</h3>
            <Card className="p-4 space-y-4">
-              <HistoryItem title="Al-Rawdah Pickup" status="Completed" price="SAR 120" />
-              <HistoryItem title="Al-Yasmin Service" status="Completed" price="SAR 150" />
+              <HistoryItem title="نقل حي الروضة" status="مكتمل" price="120 ر.س" />
+              <HistoryItem title="خدمة حي الياسمين" status="مكتمل" price="150 ر.س" />
            </Card>
         </section>
       </main>
@@ -121,8 +122,4 @@ function HistoryItem({ title, status, price }: { title: string, status: string, 
        <p className="font-bold text-sm text-primary">{price}</p>
     </div>
   );
-}
-
-function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(' ');
 }

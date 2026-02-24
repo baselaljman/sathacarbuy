@@ -30,32 +30,32 @@ export default function AuthPage() {
       <main className="flex-1 flex items-center justify-center p-4">
         <Card className="w-full max-w-md shadow-2xl animate-fade-in border-2 border-primary/5">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl font-bold font-headline">Welcome Back</CardTitle>
-            <CardDescription>Join the fastest tow truck network in Riyadh.</CardDescription>
+            <CardTitle className="text-3xl font-bold font-headline">مرحباً بك مجدداً</CardTitle>
+            <CardDescription>انضم إلى أسرع شبكة سطحات في الرياض.</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="user" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-8 h-12">
                 <TabsTrigger value="user" className="flex items-center gap-2">
-                  <User className="h-4 w-4" /> User
+                  <User className="h-4 w-4" /> عميل
                 </TabsTrigger>
                 <TabsTrigger value="driver" className="flex items-center gap-2">
-                  <Truck className="h-4 w-4" /> Driver
+                  <Truck className="h-4 w-4" /> سائق
                 </TabsTrigger>
               </TabsList>
               
               <TabsContent value="user">
                 <form className="space-y-4" onSubmit={handleAuth}>
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" placeholder="05X XXX XXXX" className="h-12" required />
+                    <Label htmlFor="phone">رقم الجوال</Label>
+                    <Input id="phone" dir="ltr" placeholder="05X XXX XXXX" className="h-12 text-right" required />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">كلمة المرور</Label>
                     <Input id="password" type="password" className="h-12" required />
                   </div>
                   <Button className="w-full h-12 text-lg font-bold" disabled={isLoading}>
-                    {isLoading ? "Signing in..." : "Login as User"}
+                    {isLoading ? "جاري تسجيل الدخول..." : "دخول كعميل"}
                   </Button>
                 </form>
               </TabsContent>
@@ -63,15 +63,15 @@ export default function AuthPage() {
               <TabsContent value="driver">
                 <form className="space-y-4" onSubmit={handleAuth}>
                   <div className="space-y-2">
-                    <Label htmlFor="driver-id">Driver ID / Phone</Label>
-                    <Input id="driver-id" placeholder="ID Number" className="h-12" required />
+                    <Label htmlFor="driver-id">هوية السائق / الجوال</Label>
+                    <Input id="driver-id" placeholder="رقم الهوية" className="h-12" required />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="d-pass">Password</Label>
+                    <Label htmlFor="d-pass">كلمة المرور</Label>
                     <Input id="d-pass" type="password" className="h-12" required />
                   </div>
                   <Button className="w-full h-12 text-lg font-bold bg-accent text-white hover:bg-accent/90" disabled={isLoading}>
-                    {isLoading ? "Signing in..." : "Login as Driver"}
+                    {isLoading ? "جاري تسجيل الدخول..." : "دخول كسائق"}
                   </Button>
                 </form>
               </TabsContent>
@@ -79,7 +79,7 @@ export default function AuthPage() {
           </CardContent>
           <CardFooter className="flex flex-col gap-4 border-t pt-6">
             <p className="text-sm text-center text-muted-foreground w-full">
-              Don't have an account? <Link href="#" className="text-primary font-bold hover:underline">Register now</Link>
+              ليس لديك حساب؟ <Link href="#" className="text-primary font-bold hover:underline">سجل الآن</Link>
             </p>
           </CardFooter>
         </Card>
