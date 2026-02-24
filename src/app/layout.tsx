@@ -2,6 +2,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
+import { FloatingContactButtons } from "@/components/FloatingContactButtons";
 
 export const metadata: Metadata = {
   title: 'سطحة الرياض | Riyadh TowAssist',
@@ -22,6 +23,7 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         {children}
+        <FloatingContactButtons />
         <Toaster />
       </body>
     </html>
