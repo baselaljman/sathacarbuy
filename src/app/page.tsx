@@ -2,7 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, Phone, FileText, ClipboardCheck, Star, Award, ThumbsUp } from "lucide-react";
+import { Truck, MapPin, ShieldCheck, Clock, CheckCircle, Zap, Phone, FileText, ClipboardCheck, Star, Award, ThumbsUp, ArrowDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
@@ -10,6 +10,14 @@ import { RIYADH_DISTRICTS } from "@/lib/riyadh-districts";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find(img => img.id === 'hero-tow');
+
+  const regionIds: Record<string, string> = {
+    "شمال الرياض (North)": "north",
+    "شرق الرياض (East)": "east",
+    "غرب الرياض (West)": "west",
+    "جنوب الرياض (South)": "south",
+    "وسط الرياض (Central)": "central"
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -52,6 +60,23 @@ export default function Home() {
                 اتصل الآن (0500606861)
               </a>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Links Navigation Bar */}
+      <section className="bg-white border-b sticky top-16 z-40 shadow-sm hidden md:block">
+        <div className="container px-4 mx-auto">
+          <div className="flex items-center justify-center gap-8 py-3 overflow-x-auto no-scrollbar">
+            {Object.keys(RIYADH_DISTRICTS).map((region) => (
+              <a 
+                key={region} 
+                href={`#${regionIds[region]}`} 
+                className="text-sm font-bold text-muted-foreground hover:text-primary transition-colors whitespace-nowrap flex items-center gap-1"
+              >
+                {region.split(' (')[0]} <ArrowDown className="h-3 w-3" />
+              </a>
+            ))}
           </div>
         </div>
       </section>
@@ -153,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Coverage Areas Section - Optimized for Local SEO and Ad Relevance */}
-      <section className="py-24 bg-muted/30">
+      <section id="coverage" className="py-24 bg-muted/30 scroll-mt-32">
         <div className="container px-4 mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold font-headline mb-4">نصلك أينما كنت في أحياء الرياض</h2>
@@ -168,7 +193,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(RIYADH_DISTRICTS).map(([region, districts]) => (
-              <Card key={region} className="border-2 border-primary/5 hover:border-primary/20 transition-all shadow-sm h-full group bg-white">
+              <Card 
+                key={region} 
+                id={regionIds[region]} 
+                className="border-2 border-primary/5 hover:border-primary/20 transition-all shadow-sm h-full group bg-white scroll-mt-28"
+              >
                 <CardHeader className="bg-primary/5 group-hover:bg-primary/10 transition-colors">
                   <CardTitle className="text-xl font-bold text-primary flex items-center gap-2">
                     <MapPin className="h-5 w-5" />
