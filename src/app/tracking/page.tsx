@@ -32,7 +32,11 @@ export default function TrackingPage() {
         <div className="flex-1 relative bg-gray-200">
            <div className="absolute inset-0 bg-[#E8EDF2] flex items-center justify-center">
               <div className="w-full h-full relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[url('https://www.google.com/maps/vt/pb=!1m4!1m3!1i12!2i1225!3i1564!2m3!1e0!2sm!3i637149099!3m8!2sen!3ssa!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425')] bg-cover" />
+                {/* Fixed: Moved the complex Google Maps URL to inline style to prevent build errors */}
+                <div 
+                  className="absolute inset-0 opacity-20 bg-cover" 
+                  style={{ backgroundImage: "url('https://www.google.com/maps/vt/pb=!1m4!1m3!1i12!2i1225!3i1564!2m3!1e0!2sm!3i637149099!3m8!2sen!3ssa!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0!23i4111425')" }}
+                />
                 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                    <div className="relative">
