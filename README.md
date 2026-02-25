@@ -38,3 +38,4 @@ npm run dev
 ## النشر
 
 المشروع مهيأ للنشر المباشر على Firebase App Hosting أو أي منصة تدعم Next.js.
+# sathacarbuy
