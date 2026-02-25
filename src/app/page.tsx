@@ -61,7 +61,7 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <StatItem icon={<Truck className="h-6 w-6 text-primary" />} label="أسطول سطحات" value="+50" />
-            <StatItem icon={<Clock className="h-6 w-6 text-primary" />} label="متوسط الوصول" value="15 دقيقة" />
+            <StatItem icon={<Clock className="h-6 w-6 text-primary" />} label="متوسط الوصول" value="8 دقيقة" />
             <StatItem icon={<Star className="h-6 w-6 text-yellow-500" />} label="تقييم العملاء" value="4.9/5" />
             <StatItem icon={<Award className="h-6 w-6 text-primary" />} label="سنوات الخبرة" value="+10 سنوات" />
           </div>
