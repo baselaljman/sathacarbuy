@@ -29,7 +29,6 @@ export default function Home() {
         </div>
         
         <div className="container relative z-10 px-4 text-center text-white animate-fade-in">
-          <Badge className="mb-4 bg-accent text-primary-foreground font-bold px-4 py-1 animate-pulse">متوفرون الآن - نصلك خلال 15 دقيقة</Badge>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl font-headline mb-6 leading-tight">
             مجموعة سطحات الأكثر <br />
             <span className="text-accent">ثقة وسرعة في الرياض</span>
