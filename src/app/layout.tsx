@@ -1,12 +1,20 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { FloatingContactButtons } from "@/components/FloatingContactButtons";
 
 export const metadata: Metadata = {
-  title: 'سطحة الرياض | Riyadh TowAssist',
-  description: 'خدمات سطحة موثوقة في جميع أحياء الرياض.',
+  title: 'سطحة الرياض | أفضل خدمة سطحة في جميع أحياء الرياض 0500606861',
+  description: 'أسرع سطحة في الرياض لنقل السيارات المتعطلة والمصدومة. نغطي أحياء شمال، شرق، غرب، وجنوب الرياض: سطحة الملز، سطحة العقيق، سطحة الياسمين، سطحة نمار، سطحة الشفا، وسطحة لبن. متوفرون 24 ساعة.',
+  keywords: [
+    'سطحة الرياض', 'سطحة شمال الرياض', 'سطحة شرق الرياض', 'سطحة غرب الرياض', 'سطحة جنوب الرياض',
+    'سطحة الملز', 'سطحة العقيق', 'سطحة الياسمين', 'سطحة الصحافة', 'سطحة الملقا', 'سطحة الروضة',
+    'سطحة لبن', 'سطحة نمار', 'سطحة الشفا', 'سطحة العزيزية', 'سطحة السليمانية', 'سطحة العليا',
+    'نقل سيارات الرياض', 'تقدير الحوادث الرياض', 'سطحة هيدروليك الرياض', 'رقم سطحة الرياض'
+  ],
+  alternates: {
+    canonical: 'https://xn--ogbhrq.vip/',
+  },
 };
 
 export default function RootLayout({
