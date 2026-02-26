@@ -6,10 +6,12 @@ import { GoogleAdsApi } from 'google-ads-api';
 
 export const runtime = 'nodejs';
 
+// --- Configuration ---
 const AD_CLICK_LIMIT = 4;
 const AD_CLICK_WINDOW_MINUTES = 10;
 const AD_CLICK_WINDOW_MS = AD_CLICK_WINDOW_MINUTES * 60 * 1000;
 
+// --- Interfaces ---
 interface ClickTrackerDoc {
   timestamps: Timestamp[];
   status: 'monitoring' | 'banned_in_ads';
@@ -24,6 +26,7 @@ interface GoogleAdsCredentials {
   customerId: string;
 }
 
+// --- Google Ads API Helper ---
 async function banIpInAllGoogleAdsAccounts(ipAddress: string): Promise<boolean> {
     console.log(`[Ad-Tracker] Attempting to ban IP ${ipAddress} in ALL Google Ads accounts.`);
 
@@ -64,7 +67,7 @@ async function banIpInAllGoogleAdsAccounts(ipAddress: string): Promise<boolean> 
             });
             
             const campaignCriterion = {
-                campaign: `customers/${cred.customerId}/campaigns/-1`,
+                campaign: `customers/${cred.customerId}/campaigns/-1`, // -1 targets all campaigns
                 ip_block: { ip_address: ipAddress },
                 negative: true,
             };
@@ -98,6 +101,8 @@ async function banIpInAllGoogleAdsAccounts(ipAddress: string): Promise<boolean> 
     return allBansSuccessful;
 }
 
+
+// --- API Route Handler ---
 export async function POST(request: NextRequest) {
   if (!firestoreAdmin) {
     return NextResponse.json({ success: true, message: 'Tracking service not configured (Firestore Admin).' });
@@ -130,7 +135,7 @@ export async function POST(request: NextRequest) {
       
       if (data.status === 'banned_in_ads') {
         console.log(`[Ad-Tracker] IP ${ip} is already banned. Ignoring new click.`);
-        return;
+        return; // Stop processing
       }
       
       const recentTimestamps = (data.timestamps || []).map(t => t.toDate()).filter(clickTime => clickTime > windowStart);
@@ -138,21 +143,28 @@ export async function POST(request: NextRequest) {
       const recentClickFirestoreTimestamps = recentTimestamps.map(d => admin.firestore.Timestamp.fromDate(d));
 
       if (recentTimestamps.length >= AD_CLICK_LIMIT) {
-        console.log(`[Ad-Tracker] IP ${ip} reached click limit (${recentTimestamps.length}). Attempting ban in all accounts...`);
-        
-        const banSuccessful = await banIpInAllGoogleAdsAccounts(ip);
-        
-        if (banSuccessful) {
-          transaction.set(trackerRef, {
-            timestamps: recentClickFirestoreTimestamps,
-            status: 'banned_in_ads',
-          });
+        // If Google Ads credentials are provided, attempt to ban the IP.
+        if (process.env.GOOGLE_ADS_ACCOUNTS) {
+          console.log(`[Ad-Tracker] IP ${ip} reached click limit (${recentTimestamps.length}). Attempting ban in all accounts...`);
+          const banSuccessful = await banIpInAllGoogleAdsAccounts(ip);
+          
+          if (banSuccessful) {
+            transaction.set(trackerRef, {
+              timestamps: recentClickFirestoreTimestamps,
+              status: 'banned_in_ads',
+            });
+          } else {
+            transaction.set(trackerRef, { timestamps: recentClickFirestoreTimestamps, status: 'monitoring' });
+            console.log(`[Ad-Tracker] Google Ads ban failed for ${ip} in at least one account. Will retry on next click.`);
+          }
         } else {
+          // If no credentials, just log the event for manual review.
           transaction.set(trackerRef, { timestamps: recentClickFirestoreTimestamps, status: 'monitoring' });
-          console.log(`[Ad-Tracker] Google Ads ban failed for ${ip} in at least one account. Will retry on next click.`);
+          console.log(`[Ad-Tracker] IP ${ip} reached click limit (${recentTimestamps.length}). Monitoring only. Manual ban required.`);
         }
 
       } else {
+        // Limit not reached, just update timestamps and keep monitoring.
         transaction.set(trackerRef, { timestamps: recentClickFirestoreTimestamps, status: 'monitoring' });
         console.log(`[Ad-Tracker] Another click recorded for ${ip}. Clicks in window: ${recentTimestamps.length}.`);
       }
