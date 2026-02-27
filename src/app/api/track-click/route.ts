@@ -1,3 +1,4 @@
+
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { admin, firestoreAdmin } from '@/lib/firebase-admin';
