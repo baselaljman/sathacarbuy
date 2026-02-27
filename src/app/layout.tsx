@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { FloatingContactButtons } from "@/components/FloatingContactButtons";
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'سطحة الرياض | أسرع خدمة نقل سيارات 24 ساعة 0500606861',
@@ -29,6 +30,18 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17766606847"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17766606847');
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased bg-background text-foreground">
         {children}
